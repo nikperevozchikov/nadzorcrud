@@ -1,0 +1,171 @@
+﻿@model IEnumerable<SystemNFO.Models.SuperMode>
+
+@*@{
+    ViewBag.Title = "Index";
+}*@
+
+<div class="container">
+    <div class="master">
+        <h2>Order</h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>ОГРН</td>
+                <td>
+                    <input type="text" id="orderNo" class="form-control" />
+                    <span class="error">Order no required</span>
+                </td>
+                <td>Сокр. наименование</td>
+                <td>
+                    <input type="text" id="orderDate" class="form-control" />
+                    <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
+                </td>
+                <td>Вид</td>
+                <td>
+                    <select id="Vidorg" class="pc form-control" onchange="LoadOrganization(this)">
+                        <option>Микрофинансовая компания</option>
+                        <option>Сельскохозяйственный кооператив</option>
+                        <option>Жилищный накопительный кооператив</option>
+                        <option>Кредитный потребительский кооператив</option>
+                        <option>Саморегулируемая органиазция</option>
+                        <option>AO Ломбард</option>
+
+                    </select>
+                    <span class="error">Select Category</span>
+                </td>
+                <td>Категория</td>
+                <td>
+                    <select id="product" class="product form-control">
+                        <option>Крупные и системнозначимые МФИ и СРО</option>
+                        <option>Крупные и системнозначимые КПК и СКПК</option>
+                        <option>Другие</option>
+                    </select>
+                    <span class="error">Select product</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Риск-профиль</td>
+                <td>
+                    <select id="product" class="product form-control">
+                        <option>Оранжевый</option>
+                        <option>Красный</option>
+                        <option>Зеленый</option>
+                    </select>
+                    <span class="error">Select product</span>
+                </td>
+                <td>Документ</td>
+                <td colspan="3">
+                    <textarea id="description" class="form-control"></textarea>
+                </td>
+                <td>Дата от:</td>
+                <td>
+                    <input type="date" id="orderDate" class="form-control" />
+                    <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
+                </td>
+                <td>Режим</td>
+                <td>
+                    <input type="text" id="orderDate" class="form-control" />
+                    <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" id="add" value="Сохранить" style="width:90px" class="btn btn-success" />
+                </td>
+                <td>
+                    <input type="button" id="add" value="Отменить" style="width:90px" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+    </div>
+   
+</div>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/Scripts/myScripts.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#orderDate').datepicker({
+            dateFormat: 'mm-dd-yy'
+        })
+    })
+</script>
+<style>
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+    tr.error {
+        background-color: rgba(255,0,0,0.35);
+    }
+</style>
+
+
+
+
+<p>
+    @Html.ActionLink("Добавить", "Create", "SuperMode")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Document)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Namemode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Ogrn)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Document)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Namemode)
+            </td>
+            @*<td>
+                @Html.ActionLink("Редактировать", "Edit", "SuperMode", new { id = item.SuperModeId })
+                @Html.ActionLink("Details", "Details", new { id = item.SuperModeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SuperModeId })
+            </td>*@
+        </tr>
+    }
+
+</table>
+

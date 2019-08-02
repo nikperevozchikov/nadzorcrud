@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SystemNFO.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee Register";
+  
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Добавление", "AddOrEdit")
+</p>
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+        </div>
+    </div>
+</div>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FIO)
+        </th>
+       
+        @*<th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="Search">
+        <td>
+            @Html.DisplayFor(modelItem => item.FIO)
+        </td>
+    
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>*@
+        <td>
+
+            @* <a action="Delete" id="@item.EmployeeId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i></a>*@
+            <a class="fa fa-marker fa-lg" @Html.ActionLink("|", "AddOrEdit", new { id = item.EmployeeId })></a>
+            <a  class="fa fa-trash-alt fa-lg" onclick="return confirm('Are you sure to delete this record?')"
+         @Html.ActionLink("|", "Delete", new { id = item.EmployeeId })></a>
+           
+            @* @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })*@
+           
+        </td>
+    </tr>
+}
+
+</table>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+
+                }
+                else {
+                    $(this).show();
+                }     
+            });
+
+        });
+    });
+</script>

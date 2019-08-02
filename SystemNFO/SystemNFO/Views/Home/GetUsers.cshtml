@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SystemNFO.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Добавление", "AddOrEdit")
+</p>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+
+            <td>
+
+                @* <a action="Delete" id="@item.EmployeeId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i></a>*@
+                <a class="fa fa-marker fa-lg" @Html.ActionLink("|", "AddOrEdit", new { id = item.Id })></a>
+                <a class="fa fa-trash-alt fa-lg" onclick="return confirm('Are you sure to delete this record?')"
+                   @Html.ActionLink("|", "Delete", new { id = item.Id })></a>
+
+                @* @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })*@
+
+            </td>
+        </tr>
+    }
+
+</table>
+

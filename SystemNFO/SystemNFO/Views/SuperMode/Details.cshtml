@@ -1,0 +1,74 @@
+﻿@model SystemNFO.Models.SuperMode
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SuperMode</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ogrn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Document)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Document)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Namemode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Namemode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SuperModeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

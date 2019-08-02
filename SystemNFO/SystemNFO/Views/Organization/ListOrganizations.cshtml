@@ -1,0 +1,3 @@
+﻿@model SystemNFO.Models.ListOrganizationViewModel
+
+@Html.DropDownListFor(m => m.Organizations, new SelectList(Model.Organizations, "OrganizationId", "Vidorg"), " ")

@@ -1,0 +1,37 @@
+﻿@model SystemNFO.Models.OrganizationCurator
+
+
+    <div>
+        <h4>OrganizationCurator</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Ogrn)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ogrn)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Socrnameorg)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Socrnameorg)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FIO)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FIO)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OrganizationCuratorId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

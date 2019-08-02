@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SystemNFO.Models.Cur>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Socrnameorg)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ogrn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Socrnameorg)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CurId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CurId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CurId })
+        </td>
+    </tr>
+}
+
+</table>

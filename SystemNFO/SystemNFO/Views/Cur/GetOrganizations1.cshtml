@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SystemNFO.Models.Cur>
+
+@{
+    ViewBag.Title = "Список организаций";
+}
+
+<h2>Куратор является резервным</h2>
+
+@*<p>
+        @Html.ActionLink("Добавить организацию", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Socrnameorg)
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ogrn)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Socrnameorg)
+            </td>
+
+
+
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.CurId }) |
+
+                @Html.ActionLink("Удалить", "Delete", new { id = item.CurId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

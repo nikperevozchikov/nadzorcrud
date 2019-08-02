@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SystemNFO.Models.SuperMode>
+
+
+
+@*<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Document)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Namemode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr class="Search">
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Document)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Namemode)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.SuperModeId }) |
+           
+            @Html.ActionLink("Удалить", "Delete", new { id = item.SuperModeId })
+        </td>
+    </tr>
+    }
+
+</table>

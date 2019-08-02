@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SystemNFO.Models.OrganizationCurator>
+
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<h2>Организации</h2>
+
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Фильтр" placeholder="Поиск" class="form-control" />
+        </div>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Socrnameorg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIO)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr class="Search">
+        <td>
+            @Html.DisplayFor(modelItem => item.Ogrn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Socrnameorg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIO)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.OrganizationCuratorId })
+            @Html.ActionLink("Отчет", "Import1", "Home")
+            @Html.ActionLink("Удалить", "Delete", new { id = item.OrganizationCuratorId })
+
+        </td>
+    </tr>
+    }
+
+</table>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+
+                }
+                else {
+                    $(this).show();
+                }
+            });
+
+        });
+    });
+</script>

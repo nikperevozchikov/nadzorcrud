@@ -1,0 +1,95 @@
+﻿@model IEnumerable<SystemNFO.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nameevent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Databegin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dataend)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dataperenos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dataplan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datacontrol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nadzorfact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nameevent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Databegin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dataend)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dataperenos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dataplan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datacontrol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nadzorfact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mode)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+            </td>
+        </tr>
+    }
+
+</table>
+

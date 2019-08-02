@@ -1,0 +1,59 @@
+﻿@model SystemNFO.Models.Organization
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление организации</h2>
+
+<h3>Вы действительно хотите удалить эту организацию?</h3>
+<div>
+    <h4>Удаление организации</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ogrn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nameorg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nameorg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Socrnameorg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Socrnameorg)
+        </dd>
+
+      
+        <dt>
+            @Html.DisplayNameFor(model => model.Vidorg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vidorg)
+        </dd>
+
+    
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку", "Index")
+        </div>
+    }
+</div>

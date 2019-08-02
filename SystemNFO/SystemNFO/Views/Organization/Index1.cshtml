@@ -1,0 +1,195 @@
+﻿@model IEnumerable<SystemNFO.Models.Organization>
+
+@{
+    ViewBag.Title = "Список организаций";
+}
+
+<h2>Список организаций</h2>
+
+<p>
+    @Html.ActionLink("Добавить организацию", "Create1")
+</p>
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Поиск" class="form-control" />
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#home" role="tab" data-toggle="tab">Основные организации</a></li>
+            <li><a href="#profile" role="tab" data-toggle="tab">Резервные организации</a></li>
+          
+        </ul>
+
+    </div>
+
+    <!-- Tab panes + Panel body -->
+    <div class="panel-body tab-content">
+        <div class="tab-pane active" id="home"><table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nameorg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Socrnameorg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vidorg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Risc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.Ogrn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nameorg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Socrnameorg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vidorg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Risc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mode)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit1", new { id = item.OrganizationId }) 
+                @Html.ActionLink("Информация", "Details", new { id = item.OrganizationId }) 
+                @Html.ActionLink("Удалить", "Delete1", new { id = item.OrganizationId })
+                <a onclick="return confirm('Посмотреть мероприятия этой организации?')"
+                   @Html.ActionLink("Мероприятия", "Index4", new { id = item.OrganizationId })></a>
+                @*@Html.ActionLink("Журнал режимов надзора", "Index", "Ноme")*@
+                @Html.ActionLink("Режим надзора", "Index3", new { id = item.OrganizationId })>
+            </td>
+        </tr>
+    }
+
+</table></div>
+        <div class="tab-pane" id="profile"><table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nameorg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Socrnameorg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vidorg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Risc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.Ogrn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nameorg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Socrnameorg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vidorg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Risc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mode)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit1", new { id = item.OrganizationId }) |
+                @Html.ActionLink("Информация", "Details", new { id = item.OrganizationId }) |
+                @Html.ActionLink("Удалить", "Delete1", new { id = item.OrganizationId })
+                <a onclick="return confirm('Посмотреть мероприятия этой организации?')"
+                   @Html.ActionLink("Мероприятия", "Index4", new { id = item.OrganizationId })></a>
+                @Html.ActionLink("Режим надзора", "Index3", new { id = item.OrganizationId })
+            </td>
+        </tr>
+    }
+
+</table></div>
+      
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+
+                }
+                else {
+                    $(this).show();
+                }
+            });
+
+        });
+    });
+</script>
